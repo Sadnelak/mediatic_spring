@@ -1,10 +1,14 @@
 package fr.iocean.application.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import fr.iocean.application.model.Adherent;
 import fr.iocean.application.repository.AdherentRepository;
 
+@Service
 public class AdherentService {
 
 	@Autowired
@@ -14,11 +18,18 @@ public class AdherentService {
 		return this.adherentRepo.findOne(id);
 	}
 	
-	public Long create(Adherent adherent){
-		
-		
-		return this.adherentRepo.findOne(adherent.g);
+	public void create(Adherent adherent){
+		this.adherentRepo.save(adherent);
 	}
 
+
+	public List<Adherent> getAll(){
+		return this.adherentRepo.findAll();
+	}
+
+	public void update(Long id, Adherent resource) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

@@ -1,5 +1,11 @@
 package fr.iocean.application.model;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Adresse {
 
 	private String ligne1;
