@@ -1,16 +1,13 @@
 package fr.iocean.application.model;
 
 import java.util.Date;
-import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.Embeddable;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
+@Embeddable
 @Getter
 @Setter
 public class Cotisation {

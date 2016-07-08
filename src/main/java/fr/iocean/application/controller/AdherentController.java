@@ -1,5 +1,7 @@
 package fr.iocean.application.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,12 @@ public class AdherentController {
 	@ResponseBody
 	public Adherent findById(@PathVariable Long id){
 		return adherentService.findById(id);
+	}
+	
+	@RequestMapping(method = RequestMethod.GET)
+	@ResponseBody
+	public List<Adherent> findById(){
+		return adherentService.getAll();
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)

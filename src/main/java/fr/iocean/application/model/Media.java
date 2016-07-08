@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -16,10 +15,9 @@ import lombok.Setter;
 @Table(name = "media")
 @Getter
 @Setter
-@SequenceGenerator(name = "seq_media", initialValue = 1, allocationSize = 1000)
 public class Media implements IOEntity {
 
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_media")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private Long id;
 	@NotBlank

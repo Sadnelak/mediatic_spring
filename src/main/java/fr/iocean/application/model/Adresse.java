@@ -1,15 +1,14 @@
 package fr.iocean.application.model;
 
-import javax.persistence.Entity;
+import javax.persistence.Embeddable;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
-@Entity
+
+@Embeddable
 @Getter
 @Setter
 public class Adresse {
-
 	private String ligne1;
 	private String ligne2;
 	private String codepostal;
