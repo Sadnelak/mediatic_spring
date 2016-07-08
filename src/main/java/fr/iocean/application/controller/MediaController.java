@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.iocean.application.model.Adherent;
+
 import fr.iocean.application.model.Media;
 import fr.iocean.application.service.MediaService;
 import javassist.NotFoundException;
@@ -38,7 +38,7 @@ public class MediaController {
 	
 	@RequestMapping(value="{id}", method = RequestMethod.PUT)
 	@ResponseBody
-	public void update(@PathVariable Long id, @RequestBody @Valid Adherent resource) throws NotFoundException{
+	public void update(@PathVariable Long id, @RequestBody @Valid Media resource) throws NotFoundException{
 		mediaService.update(id,resource);
 	}
 }

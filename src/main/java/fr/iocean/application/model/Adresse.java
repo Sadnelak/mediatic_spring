@@ -1,9 +1,11 @@
 package fr.iocean.application.model;
 
+import javax.persistence.Entity;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
-
+@Entity
 @Getter
 @Setter
 public class Adresse {
