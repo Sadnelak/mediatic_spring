@@ -1,6 +1,6 @@
 local.properties
 local.yml
-application-dev.yml
+application-dev.*
 .springBeans
 
 #env/ide
