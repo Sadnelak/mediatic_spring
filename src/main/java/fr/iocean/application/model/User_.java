@@ -16,7 +16,7 @@ import lombok.Setter;
 @Table(name = "user_")
 @Getter
 @Setter
-public class user_ {
+public class User_ {
 	
 	private String username;
 	private String password;
@@ -24,7 +24,9 @@ public class user_ {
 	private Long id;
 	
 	@Embedded
-	private String rights;
+	private List<Authority> authorities;
+
+	
 	
 	
 

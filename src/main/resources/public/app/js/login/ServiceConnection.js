@@ -17,23 +17,7 @@ angular.module('login').factory(
 						});
 				return promise;
 
-			};
-			s.postCLogin = function(monUser) {
-
-				var promise2 = $http.post(UrlConnection.cLogin, monUser).then(
-						function(resultat2) {
-							console.log("result.data : ",resultat2.data);
-							console.log("result : ",resultat2);
-							return true;
-						}, function() {
-							console.error('error requete login post');
-							return false;
-						});
-				return promise2;
-			}
-			
-			
-			
+			};			
 			
 			return s;
 		});
@@ -54,14 +38,14 @@ angular.module('login').factory(
 			AuthService.connect = function(login, password){
 				return RequeteLogin.postCLogin({login : login, mdp: password}).then(function(response){
 					if(response){
-						//je suis authentifier
+						//je suis authentifié
 						console.log("SConnection : 57 ",response);
 						var crypt = 'Basic ' +btoa(login+':'+password);
 						connect = true;
 						$http.defaults.headers.common['Authorization']=crypt;
 						return true;
 					}
-					//je ne suis pas authentifier
+					//je ne suis pas authentifié
 					return false;
 				});
 			};
