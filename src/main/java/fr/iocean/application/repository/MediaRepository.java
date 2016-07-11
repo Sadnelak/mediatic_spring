@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import fr.iocean.application.model.Media;
 
-@Repository
+
 public interface MediaRepository extends JpaRepository<Media, Long>{
 
 }

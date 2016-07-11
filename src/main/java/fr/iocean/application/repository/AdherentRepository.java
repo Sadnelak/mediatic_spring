@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import fr.iocean.application.model.Adherent;
 
-@Repository
+
 public interface AdherentRepository extends JpaRepository<Adherent, Long>{
 
 	
