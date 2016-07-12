@@ -27,6 +27,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "authorities", method = RequestMethod.GET)
 	public List<GrantedAuthority> findAuthorities() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();

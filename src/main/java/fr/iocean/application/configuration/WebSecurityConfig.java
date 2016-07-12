@@ -21,10 +21,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	AuthenticationService authenticationService;
 
+	@Autowired
+	HttpBasicEntryPoint httpBasicEntryPoint;
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
-				.antMatchers("/api/public/**").permitAll().anyRequest().authenticated().and().httpBasic().and().csrf()
+				.antMatchers("/api/public/**", "/app/**").permitAll()
+				.anyRequest().authenticated()
+				.and().httpBasic().authenticationEntryPoint(httpBasicEntryPoint)
+				.and().csrf()
 				.disable();
 	}
 

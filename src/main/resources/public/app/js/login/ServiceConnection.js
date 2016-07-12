@@ -36,6 +36,25 @@ angular.module('login').factory(
 			};
 			
 			AuthService.connect = function(login, password){
+				
+				var config = {
+					 headers: {
+						   'Authorization': 'Basic ' +btoa(login+':'+password)
+						 }
+				}
+				
+				$http.get("/api/users/authorities", config).then(function(response) {
+					if (response.status === 200) {
+						// var global isConnected = true
+						$http.defaults.headers.common['Authorization']='Basic ' +btoa(login+':'+password);
+						//reponse.data => droit de l'utilisateur => a stocker
+						// add in cookies
+					} else {
+						$scope.errormessage = 'Identifiants inccorect';
+					}
+				})
+				
+				
 				return RequeteLogin.postCLogin({login : login, mdp: password}).then(function(response){
 					if(response){
 						//je suis authentifié
@@ -52,6 +71,7 @@ angular.module('login').factory(
 			AuthService.disconnect = function(){
 				connect = false;
 				$http.defaults.headers.common['Authorization']='Basic ';
+				// remove des cookies
 			}
 			return AuthService;
 
