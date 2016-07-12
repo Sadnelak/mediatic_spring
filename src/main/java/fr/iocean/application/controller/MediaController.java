@@ -1,5 +1,7 @@
 package fr.iocean.application.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +20,25 @@ import fr.iocean.application.service.MediaService;
 import javassist.NotFoundException;
 
 @RestController
-@RequestMapping("/api/media")
+@RequestMapping("/api/medias")
 public class MediaController {
 
 	@Autowired
 	MediaService mediaService;
 	
+	@RequestMapping(method = RequestMethod.GET)
+	public List<Media> findAll(){
+		return mediaService.getAll();
+	}
+	
+	
+//	@RequestMapping(value="taille",method = RequestMethod.GET)
+//	public int countAll(){
+//		int count=mediaService.getAll().size();
+//		return count;
+//	}
+	
 	@RequestMapping(value="{id}", method = RequestMethod.GET)
-	@ResponseBody
 	public Media findById(@PathVariable Long id){
 		return mediaService.findById(id);
 	}
@@ -37,7 +50,6 @@ public class MediaController {
 	}
 	
 	@RequestMapping(value="{id}", method = RequestMethod.PUT)
-	@ResponseBody
 	public void update(@PathVariable Long id, @RequestBody @Valid Media resource) throws NotFoundException{
 		mediaService.update(id,resource);
 	}

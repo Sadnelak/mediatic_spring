@@ -35,6 +35,7 @@ angular.module('login').factory(
 				return connect;
 			};
 			
+			
 			AuthService.connect = function(login, password){
 				
 				var config = {
@@ -43,33 +44,40 @@ angular.module('login').factory(
 						 }
 				}
 				
-				$http.get("/api/users/authorities", config).then(function(response) {
+				return $http.get(UrlConnection.cLogin, config).then(function(response) {
+					
+					var headerConnected;
+					
 					if (response.status === 200) {
-						// var global isConnected = true
+						connect = true;
 						$http.defaults.headers.common['Authorization']='Basic ' +btoa(login+':'+password);
 						//reponse.data => droit de l'utilisateur => a stocker
+						headerConnected = response.data; 
 						// add in cookies
 					} else {
+						connect = false;
 						$scope.errormessage = 'Identifiants inccorect';
 					}
+					return connect;
 				})
 				
 				
-				return RequeteLogin.postCLogin({login : login, mdp: password}).then(function(response){
-					if(response){
-						//je suis authentifié
-						console.log("SConnection : 57 ",response);
-						var crypt = 'Basic ' +btoa(login+':'+password);
-						connect = true;
-						$http.defaults.headers.common['Authorization']=crypt;
-						return true;
-					}
-					//je ne suis pas authentifié
-					return false;
-				});
+//				return RequeteLogin.postCLogin({login : login, mdp: password}).then(function(response){
+//					if(response){
+//						//je suis authentifié
+//						console.log("SConnection : 57 ",response);
+//						var crypt = 'Basic ' +btoa(login+':'+password);
+//						connect = true;
+//						$http.defaults.headers.common['Authorization']=crypt;
+//						return true;
+//					}
+//					//je ne suis pas authentifié
+//					return false;
+//				});
 			};
 			AuthService.disconnect = function(){
 				connect = false;
+				headerConnected = null;
 				$http.defaults.headers.common['Authorization']='Basic ';
 				// remove des cookies
 			}
@@ -85,11 +93,12 @@ angular.module('login').factory(
 
 			var s = {};
 			
-			s.getMRecherche = function() {
+			s.getMRecherche = function(taille) {
 				var promise = $http.get(UrlConnection.mRecherche).then(
 						function(resultat) {
 							console.log(resultat.data);
-							return resultat.data;
+							if(taille)
+								return resultat.data;
 						}, function() {
 							console.error('Erreur recherche médias');
 							console.log("result :", resultat);
@@ -100,19 +109,19 @@ angular.module('login').factory(
 
 			};
 
-			s.getMRechercheT = function() {
-				var promise = $http.get(UrlConnection.mRechercheT).then(
-						function(resultat) {
-							console.log('[getMRechercheT] ',resultat.data.items);
-							console.log(resultat.data) //objet à 2 variables
-							return resultat.data.items;
-						}, function() {
-							console.error('Erreur recherche taille médias');
-							return -1;
-						});
-				return promise;
-
-			};
+//			s.getMRechercheT = function() {
+//				var promise = $http.get(UrlConnection.mRechercheT).then(
+//						function(resultat) {
+//							console.log('[getMRechercheT] ',resultat.data.items);
+//							console.log(resultat.data) //objet à 2 variables
+//							return resultat.data.items;
+//						}, function() {
+//							console.error('Erreur recherche taille médias');
+//							return -1;
+//						});
+//				return promise;
+//
+//			};
 			
 			s.getMAccession = function(ref) {
 				var  config = {

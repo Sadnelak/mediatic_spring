@@ -25,7 +25,7 @@ angular
 							 $scope.user.password
 						).then (function(resultat) {
 							console.log(resultat);
-							if(resultat == true){
+							if(resultat){
 								$scope.isConnected = true;
 							}
 						}, function() {

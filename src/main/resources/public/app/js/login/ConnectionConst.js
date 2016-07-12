@@ -7,8 +7,8 @@ angular
 	.module('login')
 	.value('UrlConnection', {basic : basique,
 							
-							mRecherche : basique + "/api/media.recherche",//get
-							mRechercheT : basique + "/api/media.recherche.taille",//get
+							mRecherche : basique + "/api/medias",//get
+							mRechercheT : basique + "/api/medias/taille",//get
 							mAccession : basique + "/api/media.accession",//get
 							mCreation : basique + "/api/media.creation",//post
 							mModification : basique + "/api/media.modification",//post
@@ -18,7 +18,7 @@ angular
 							aCreation : basique + "/api/adherent.creation",//post
 							aModification : basique + "/api/adherent.modification",//post
 							eAjout : basique + "/api/emprunt.ajout",//post
-							cLogin : basique + "/api/connexion.login",//post
-							cRight : basique + "/api/connexion.right",});//get
+							cLogin : basique + "/api/users/authorities",//post
+							cRight : basique + "/api/users/authorities",});//get
 							
 })()

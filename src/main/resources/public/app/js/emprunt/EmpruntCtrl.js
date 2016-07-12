@@ -37,11 +37,11 @@ angular.module('emprunt').controller('EmpruntCtrl',
 
 					var dateEmprunt = new Date($scope.emprunt.dateEmprunt.annee,$scope.emprunt.dateEmprunt.mois-1,$scope.emprunt.dateEmprunt.jour);
 					
-					var dureePret{};
+					var dureePret={};
 					dureePret.livre = 30;
 					dureePret.cd = 15;
 					dureePret.dvd = 15;
-					if()
+//					if()
 					var dateEmpruntRetour = new Date($scope.emprunt.dateEmprunt.annee +1,$scope.emprunt.dateEmprunt.mois-1,$scope.emprunt.dateEmprunt.jour);
 
 					$scope.emprunt.cotisation.debut=dateEmprunt.toString();
