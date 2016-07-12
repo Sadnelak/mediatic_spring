@@ -24,7 +24,8 @@ public class UserService {
 	}
 
 	public void create(User resource) {
-		resource.setPassword(passwordEncoder.encode(resource.getPassword()));
+		String myEncodedPassword =passwordEncoder.encode(resource.getPassword());
+		resource.setPassword(myEncodedPassword);
 		repository.save(resource);
 	}
 

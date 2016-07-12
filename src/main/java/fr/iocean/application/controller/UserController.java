@@ -21,7 +21,7 @@ import fr.iocean.application.model.User;
 import fr.iocean.application.service.UserService;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/public/users")
 public class UserController {
 	
 	@Autowired
