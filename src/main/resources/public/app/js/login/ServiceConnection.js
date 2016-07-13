@@ -93,12 +93,11 @@ angular.module('login').factory(
 
 			var s = {};
 			
-			s.getMRecherche = function(taille) {
+			s.getMRecherche = function() {
 				var promise = $http.get(UrlConnection.mRecherche).then(
 						function(resultat) {
 							console.log(resultat.data);
-							if(taille)
-								return resultat.data;
+							return resultat.data;
 						}, function() {
 							console.error('Erreur recherche médias');
 							console.log("result :", resultat);
@@ -226,7 +225,7 @@ angular.module('login').factory(
 							console.log(resultat.data)
 							return resultat.data;
 						}, function() {
-							console.error('Erreur accès adhérents');
+							console.log('Erreur accès adhérents');
 							return {};
 						});
 				return promise;
@@ -238,11 +237,9 @@ angular.module('login').factory(
 							console.log(resultat2.data);
 							console.log(resultat2);
 							return true;
-						}, function() {
-
-							console.error('Erreur création adhérents');
+						}, function(){
+							console.log('Erreur création adhérents');
 							return false;
-
 						});
 				return promise2;
 			}

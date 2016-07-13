@@ -8,30 +8,26 @@ angular
 				
 				console.log("[RechercheAdherentCtrl]");
 				//Remarque : code repris de RechercheMedia et transformé.  
-				RequeteAdherent.getARechercheT().then(
-						function(taille){
-							RequeteAdherent.getARecherche().then(
+						RequeteAdherent.getARecherche().then(
 								function(data){
 									var tableau = [];
-									for(var i = 0; i < taille; i++){
+									for(var i = 0; i < data.length; i++){
 										//splitter = data[i].date_naissance.split("T");
+										console.log("Utilisateur "+i,data[i].id,data[i].nom,data[i].prenom,data[i].date_naissance);
 										tableau.push({
 											id:''+data[i].id,
 											nom:data[i].nom,
 											prenom:data[i].prenom,
-											dateNaissance:(data[i].date_naissance.split("T"))[0],//splitter[0],
+											dateNaissance:(data[i].date_naissance)[0],//splitter[0],
 											aJourCotis:true,
 											nbMedias:0
 										});
 									}
 									$scope.listeAdherents = tableau;
 								},function(reason){
-									console.log('Echec insertion données !');
-								});		
-						},function(reason){
-							console.log('Taille indisponible !');
-						}
-					);
+									console.log('Echec insertion données !')
+								});	
+						
 				
 				/*Cotisation*/
 				$scope.chaineAJourCotis = function(adherent){

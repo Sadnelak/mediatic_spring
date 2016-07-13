@@ -19,7 +19,7 @@ import fr.iocean.application.service.AdherentService;
 import javassist.NotFoundException;
 
 @RestController
-@RequestMapping("/api/adherent")
+@RequestMapping("/api/adherents")
 public class AdherentController {
 
 	@Autowired
