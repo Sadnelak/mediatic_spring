@@ -29,7 +29,7 @@ angular
 								$scope.isConnected = true;
 							}
 						}, function() {
-							console.error('error');
+							console.log('error');
 							return [];
 						});
 									

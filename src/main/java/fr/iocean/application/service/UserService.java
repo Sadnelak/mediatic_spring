@@ -22,6 +22,10 @@ public class UserService {
 	public User findById(Long id) {
 		return repository.findOne(id);
 	}
+	
+	public User findByUsername(String login) {
+		return repository.findByUsername(login);
+	}
 
 	public void create(User resource) {
 		String myEncodedPassword =passwordEncoder.encode(resource.getPassword());
